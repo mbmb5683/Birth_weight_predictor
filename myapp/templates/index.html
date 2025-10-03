@@ -96,10 +96,10 @@
   <h1>Predict Birth Weight</h1>
 
   <form method="POST" action="/predict">
-    <label>Gestation</label>
+    <label>Gestation (born in days)</label>
     <input name="gestation" type="number" required>
 
-    <label>Parity</label>
+    <label>Parity (0=first pregnancy , 1= >1)</label>
     <input name="parity" type="number" required>
 
     <label>Age</label>
@@ -111,7 +111,7 @@
     <label>Weight</label>
     <input name="weight" type="number" required>
 
-    <label>Smoke</label>
+    <label>Smoke(0=non-smoker, 1= smoker)</label>
     <input name="smoke" type="number" required>
 
     <button type="submit">🔍 Predict Baby's Weight</button>
