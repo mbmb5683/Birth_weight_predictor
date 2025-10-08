@@ -1,7 +1,7 @@
 from flask import Flask , render_template, request
 import pandas as pd
 import pickle
-
+import os
 
 app=Flask(__name__)
 
@@ -35,27 +35,38 @@ def home_page():
 
 
 
+@app.route("/hello", methods=["GET"])
+def hello():
+    return "hello world", 200
+
+
+EXPECTED_COLUMNS=['gestation', 'parity', 'age', 'height', 'weight', 'smoke']
+
+
 @app.route("/predict", methods=["POST"])
 def birth_weight_prediction ():
-    baby_data=request.form
+    #baby_data=request.form
+    baby_data_form= request.get_json()
 
 
-    baby_data_cleaned= cleaned_data(baby_data)
 
-    data_dataframe= pd.DataFrame(baby_data_cleaned)
+    #baby_data_cleaned= cleaned_data(baby_data)
 
+    data_dataframe= pd.DataFrame(baby_data_form)
+    data_dataframe= data_dataframe[EXPECTED_COLUMNS]
 
-    with open ("myapp/model.pkl", "rb")as obj:
+    model_path= os.path.join(os.path.dirname(__file__),"model.pkl")
+    with open (model_path, "rb")as obj:
         model=pickle.load(obj)
 
         prediction=model.predict(data_dataframe)
 
         prediction= round(float(prediction),2)
 
+        response= {"prediction" : prediction}
 
-
-        return render_template("index.html", prediction= prediction)
-
+        #return render_template("index.html", prediction= prediction)
+        return response, 200
 
 
 
