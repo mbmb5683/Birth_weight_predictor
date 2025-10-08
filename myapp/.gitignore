@@ -5,3 +5,9 @@ userfile/
 
 # Ignore Jupyter notebook used for training
 model_training.ipynb
+# Ignore virtual environment
+venv/
+Lib/
+myapp/Lib/
+__pycache__/
+*.pyc

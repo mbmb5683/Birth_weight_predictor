@@ -34,6 +34,7 @@ def home_page():
 
 
 
+
 @app.route("/predict", methods=["POST"])
 def birth_weight_prediction ():
     baby_data=request.form
