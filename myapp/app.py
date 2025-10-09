@@ -1,18 +1,10 @@
 from flask import Flask , render_template, request
 import pandas as pd
 import pickle
-import os
-from flask_restx import Api, Resource, fields
-
-
 
 
 #create flask app
 app=Flask(__name__)
-
-
-
-
 
 
 
@@ -38,7 +30,6 @@ def cleaned_data (form_data):
     
 
 
-
 #this is render my homepage of my predict url
 @app.route("/", methods=["GET"])
 def home_page():
@@ -46,24 +37,20 @@ def home_page():
 
 
 
-
-
-
-
 #this route is made for prediction of baby's birth weight....
+
 @app.route("/predict", methods=["POST"])
 def birth_weight_prediction ():
     baby_data=request.form
-    
 
+    #cleaning the user data from string to float or int in function cleaned_data
     baby_data_cleaned= cleaned_data(baby_data)
 
     #convert user data into dataframe
     data_dataframe= pd.DataFrame(baby_data_cleaned)
-    
+
 
     #load machine learning trained model
-    
     with open ("myapp/model.pkl" , "rb")as obj:
         model=pickle.load(obj)
 
@@ -75,8 +62,7 @@ def birth_weight_prediction ():
     
     return render_template("index.html", prediction= prediction)
     
-        
-
+    
 
 
 if __name__=="__main__":
