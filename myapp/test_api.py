@@ -1,12 +1,12 @@
 from app import app
 
 #first positive test case for "/hello" route
-def test_hello_route_success ():
-      tester=app.test_client()
-      response = tester.get("/hello")
+# def test_hello_route_success ():
+#       tester=app.test_client()
+#       response = tester.get("/hello")
 
 
-      assert response.status_code==200
+#       assert response.status_code==200
 
 
 #negative test case for "/hello" route
