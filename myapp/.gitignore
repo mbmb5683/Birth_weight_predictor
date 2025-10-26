@@ -1,0 +1,13 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Ignore user uploads
+
+userfile/
+
+# Ignore Jupyter notebook used for training
+model_training.ipynb
+# Ignore virtual environment
+venv/
+Lib/
+myapp/Lib/
+__pycache__/
+*.pyc
