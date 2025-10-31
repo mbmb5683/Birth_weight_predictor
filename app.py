@@ -51,7 +51,7 @@ def birth_weight_prediction ():
 
 
     #load machine learning trained model
-    with open ("myapp/model/model.pkl" , "rb")as obj:
+    with open ("model.pkl" , "rb")as obj:
         model=pickle.load(obj)
 
     #make prediction on user data
